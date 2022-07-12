@@ -114,7 +114,7 @@ staffName.addEventListener('change', (e) => {
     })
 
 document.getElementById('submit').addEventListener("click", async (event) => {
-  submitForm(newForm, 'consultationFeeSummary')
+  submitForm(newForm, form)
 })
 
 async function submitForm(data, form) {
