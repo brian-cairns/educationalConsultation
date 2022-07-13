@@ -113,8 +113,14 @@ staffName.addEventListener('change', (e) => {
     console.log(newForm.staffName)
     })
 
+let todaysDate = document.querySelector('input#todaysDate')
+todaysDate.addEventListener('change', (e) => {
+    newForm.todaysDate = e.target.value;
+    console.log(newForm.todaysDate)
+    })
+
 document.getElementById('submit').addEventListener("click", async (event) => {
-  submitForm(newForm, form)
+  submitForm(newForm, 'consultationFeeSummary')
 })
 
 async function submitForm(data, form) {
