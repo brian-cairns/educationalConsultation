@@ -47,13 +47,13 @@ parentalConcern1.addEventListener('change', (e) => {
   console.log(newForm.parentalConcern1);
 })
 
-let resolution1 = document.querySelector('input#resolution1')
+let resolution1 = document.getElementById('resolution1')
 resolution1.addEventListener('change', (e) => {
 	newForm.resolution1 = e.target.value;
   console.log(newForm.resolution1);
 })
 
-let nextSteps1 = document.querySelector('input#nextSteps1')
+let nextSteps1 = document.getElementById('nexSteps1')
 nextSteps1.addEventListener('change', (e) => {
 	newForm.nextSteps1 = e.target.value;
   console.log(newForm.nextSteps1);
@@ -65,13 +65,13 @@ parentalConcern2.addEventListener('change', (e) => {
   console.log(newForm.parentalConcern2);
 })
 
-let resolution2 = document.querySelector('input#resolution2')
+let resolution2 = document.getElementById('resolution2')
 resolution2.addEventListener('change', (e) => {
 	newForm.resolution2 = e.target.value;
   console.log(newForm.resolution2);
 })
 
-let nextSteps2 = document.querySelector('input#nextSteps2')
+let nextSteps2 = document.getElementById('nextSteps2')
 nextSteps2.addEventListener('change', (e) => {
 	newForm.nextSteps2 = e.target.value;
   console.log(newForm.nextSteps1);
@@ -83,25 +83,25 @@ parentalConcern3.addEventListener('change', (e) => {
   console.log(newForm.parentalConcern3);
 })
 
-let resolution3 = document.querySelector('input#resolution3')
+let resolution3 = document.getElementById('resolution3')
 resolution3.addEventListener('change', (e) => {
 	newForm.resolution3 = e.target.value;
   console.log(newForm.resolution3);
 })
 
-let nextSteps3 = document.querySelector('input#nextSteps3')
+let nextSteps3 = document.getElementById('nextSteps3')
 nextSteps3.addEventListener('change', (e) => {
 	newForm.nextSteps3 = e.target.value;
   console.log(newForm.nextSteps1);
 })
 
-let followUp = document.querySelector('input#followUp')
+let followUp = document.getElementById('followUp')
 followUp.addEventListener('change', (e) => {
     newForm.followUp = e.target.value;
     console.log(newForm.followUp)
 })
     
-let notes = document.querySelector('input#notes')
+let notes = document.getElementById('notes')
 notes.addEventListener('change', (e) => {
     newForm.notes = e.target.value;
     console.log(newForm.notes)
