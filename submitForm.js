@@ -1,6 +1,6 @@
 let submit = document.getElementById('submit')
 console.log(submit)
-const formName = 'consultationFeeSummary'
+const formName = 'educationConsultation'
 console.log('form: ' + formName)
 let newForm = {}
 
@@ -120,7 +120,7 @@ todaysDate.addEventListener('change', (e) => {
     })
 
 document.getElementById('submit').addEventListener("click", async (event) => {
-  submitForm(newForm, 'consultationFeeSummary')
+  submitForm(newForm, formName)
 })
 
 async function submitForm(data, form) {
