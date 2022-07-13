@@ -1,6 +1,6 @@
 let submit = document.getElementById('submit')
 console.log(submit)
-const formName = 'educationConsultation'
+const formName = 'educationalConsultation'
 console.log('form: ' + formName)
 let newForm = {}
 
