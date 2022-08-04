@@ -147,11 +147,11 @@ async function submitForm(data, form) {
 }
 
 function respond(data) {
-  let formId = data.formId
-  if (formId) {
-    showSuccess(formId)
+  let id = data.key
+  if (id) {
+    showSuccess(id)
     let name = newForm.clientId	  
-    sendNotification(formId, name)	  
+    sendNotification(id, name)	  
   } else {
     showError(data.error)
   }
@@ -161,7 +161,7 @@ function showSuccess(formId) {
   document.getElementById('returnMessage').innerHTML = 'Form has been successfully submitted'
   printForm.style.display = 'block';
   printForm.addEventListener('click', (e) => {
-    location.href = `phoenix-freedom-foundation-backend.webflow.io/completed-forms/consultation-fee-summary?formId=${formId}`
+    location.href = `phoenix-freedom-foundation-backend.webflow.io/completed-forms/educational-consultation?id=${id}`
   })
 }
 
@@ -171,7 +171,7 @@ function showError(err) {
 }
 
 async function sendNotification(id, client) {
-  let message = `You have a new <br/><a href=phoenix-freedom-foundation-backend.webflow.io/completed-forms/consultation-fee-summary?formId=${id}>Educational Consultation Summary</a>`
+  let message = `You have a new <br/><a href=phoenix-freedom-foundation-backend.webflow.io/completed-forms/educational-consultation?id=${id}>Educational Consultation Summary</a>`
   console.log(message)
   const url = 'https://pffm.azurewebsites.net/notices'
   let notification = {
