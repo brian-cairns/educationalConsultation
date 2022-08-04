@@ -157,7 +157,7 @@ function respond(data) {
   }
 }
 
-function showSuccess(formId) {
+function showSuccess(id) {
   document.getElementById('returnMessage').innerHTML = 'Form has been successfully submitted'
   printForm.style.display = 'block';
   printForm.addEventListener('click', (e) => {
