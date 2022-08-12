@@ -4,7 +4,7 @@ const formName = 'educationalConsultation'
 console.log('form: ' + formName)
 let newForm = {}
 
-let printForm = document.getElementById('print')
+let printForm = document.getElementById('printToPDF')
 printForm.style.display = 'none'
 
 
