@@ -150,8 +150,9 @@ function respond(data) {
   let id = data.key
   if (id) {
     showSuccess(id)
-    let name = newForm.clientId	  
-    sendNotification(id, name)	  
+    sendNotification(id, newForm.clientName, 'individual', 'not urgent')
+    sendNotification(id, newForm.staffName, 'individual', 'not urgent')
+    sendNotification(id, 'admin', 'individual','not urgent')
   } else {
     showError(data.error)
   }
@@ -161,7 +162,7 @@ function showSuccess(id) {
   document.getElementById('returnMessage').innerHTML = 'Form has been successfully submitted'
   printForm.style.display = 'block';
   printForm.addEventListener('click', (e) => {
-    location.href = `phoenix-freedom-foundation-backend.webflow.io/completed-forms/educational-consultation?id=${id}`
+    location.href = `https://phoenix-freedom-foundation-backend.webflow.io/completed-forms/educational-consultation?id=${id}`
   })
 }
 
@@ -170,13 +171,15 @@ function showError(err) {
     document.getElementById('returnMessage').innerHTML = `An error occurred when submitting this form, which was ${err}. Please contact the administrator for help.`
 }
 
-async function sendNotification(id, client) {
+async function sendNotification(id, recipient, type, priority) {
   let message = `You have a new <br/><a href=phoenix-freedom-foundation-backend.webflow.io/completed-forms/educational-consultation?id=${id}>Educational Consultation Summary</a>`
   console.log(message)
   const url = 'https://pffm.azurewebsites.net/notices'
   let notification = {
-    'name': client,
-    'notice' : message 
+    'name': recipient,
+    'notice': message,
+    'type': type,
+    'priority': priority
   }
   const header = {
       'Content-Type': 'application/json',
@@ -204,3 +207,4 @@ function clearForm() {
     document.getElementById(`serviceSummary${i}`).innerHTML = ''
   }
 }
+
