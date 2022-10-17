@@ -7,121 +7,33 @@ let newForm = {}
 let printForm = document.getElementById('printToPDF')
 printForm.style.display = 'none'
 
+newForm.concerns = []
 
-let clientName = document.querySelector('input#clientName')
-clientName.addEventListener('change', (e) => {
-	console.log('changed')
-	newForm.clientName = e.target.value;
-  console.log(newForm.clientName);
-  })
-  
-let employeeEmail = document.querySelector('input#employeeEmail')
-employeeEmail.addEventListener('change', (e) => {
-	newForm.employeeEmail = e.target.value;
-  console.log(newForm.employeeEmail);
+document.getElementById('submit').addEventListener("click", (event) => {
+  newForm.date = document.querySelector('input#date').value
+  newForm.staffEmail = document.querySelector('input#staffEmail').value
+  newForm.clientName = document.querySelector('input#clientName').value
+  newForm.start = document.querySelector('input#start').value
+  newForm.stop = document.querySelector('input#stop').value
+  newForm.membersPresent = document.querySelector('input#membersPresent').value
+  newForm.location = document.querySelector('input#location').value
+  for (let i = 1; i < 4; i++) {
+    console.log(i)
+    if (document.querySelector(`input#concern${i}`).value != null) {
+      newForm.concerns[i] = {
+        'concern': document.querySelector(`input#concern${i}`).value,
+        'resolutions': document.getElementById(`resolution${i}`).value,
+        'nextSteps': document.getElementById(`nextSteps${i}`).value
+      }
+    } else { i = 4 }
+  }
+  newForm.staffName = document.querySelector('input#staffName').value 
+  newForm.recordDate = document.querySelector('input#finalDate').value
+  newForm.notes = document.getElementById('notes').value
+  newForm.followUps = document.getElementById('followUps').value
+  submitForm(newForm, formName)
 })
 
-let membersPresent = document.querySelector('input#membersPresent')
-membersPresent.addEventListener('change', (e) => {
-	newForm.membersPresent = e.target.value;
-  console.log(newForm.membersPresent);
-})
-
-let date = document.querySelector('input#date')
-date.addEventListener('change', (e) => {
-	newForm.date = e.target.value;
-  console.log(newForm.date);
-})
-
-let start = document.querySelector('input#start')
-start.addEventListener('change', (e) => {
-	newForm.start = e.target.value;
-  console.log(newForm.start);
-})
-
-let end = document.querySelector('input#end')
-end.addEventListener('change', (e) => {
-	newForm.end = e.target.value;
-  console.log(newForm.end);
-})
-
-let parentalConcern1 = document.querySelector('input#parentalConcern1')
-parentalConcern1.addEventListener('change', (e) => {
-	newForm.parentalConcern1 = e.target.value;
-  console.log(newForm.parentalConcern1);
-})
-
-let resolution1 = document.getElementById('resolution1')
-resolution1.addEventListener('change', (e) => {
-	newForm.resolution1 = e.target.value;
-  console.log(newForm.resolution1);
-})
-
-let nextSteps1 = document.getElementById('nexSteps1')
-nextSteps1.addEventListener('change', (e) => {
-	newForm.nextSteps1 = e.target.value;
-  console.log(newForm.nextSteps1);
-})
-
-let parentalConcern2 = document.querySelector('input#parentalConcern2')
-parentalConcern2.addEventListener('change', (e) => {
-	newForm.parentalConcern2 = e.target.value;
-  console.log(newForm.parentalConcern2);
-})
-
-let resolution2 = document.getElementById('resolution2')
-resolution2.addEventListener('change', (e) => {
-	newForm.resolution2 = e.target.value;
-  console.log(newForm.resolution2);
-})
-
-let nextSteps2 = document.getElementById('nextSteps2')
-nextSteps2.addEventListener('change', (e) => {
-	newForm.nextSteps2 = e.target.value;
-  console.log(newForm.nextSteps1);
-})
-
-let parentalConcern3 = document.querySelector('input#parentalConcern3')
-parentalConcern3.addEventListener('change', (e) => {
-	newForm.parentalConcern3 = e.target.value;
-  console.log(newForm.parentalConcern3);
-})
-
-let resolution3 = document.getElementById('resolution3')
-resolution3.addEventListener('change', (e) => {
-	newForm.resolution3 = e.target.value;
-  console.log(newForm.resolution3);
-})
-
-let nextSteps3 = document.getElementById('nextSteps3')
-nextSteps3.addEventListener('change', (e) => {
-	newForm.nextSteps3 = e.target.value;
-  console.log(newForm.nextSteps1);
-})
-
-let followUp = document.getElementById('followUp')
-followUp.addEventListener('change', (e) => {
-    newForm.followUp = e.target.value;
-    console.log(newForm.followUp)
-})
-    
-let notes = document.getElementById('notes')
-notes.addEventListener('change', (e) => {
-    newForm.notes = e.target.value;
-    console.log(newForm.notes)
-})
-    
-let staffName = document.querySelector('input#staffName')
-staffName.addEventListener('change', (e) => {
-    newForm.staffName = e.target.value;
-    console.log(newForm.staffName)
-    })
-
-let todaysDate = document.querySelector('input#todaysDate')
-todaysDate.addEventListener('change', (e) => {
-    newForm.todaysDate = e.target.value;
-    console.log(newForm.todaysDate)
-    })
 
 document.getElementById('submit').addEventListener("click", async (event) => {
   submitForm(newForm, formName)
@@ -160,7 +72,7 @@ function respond(data) {
 
 function showSuccess(id) {
   document.getElementById('returnMessage').innerHTML = 'Form has been successfully submitted'
-  printForm.style.display = 'block';
+  printForm.style.display = 'inline';
   printForm.addEventListener('click', (e) => {
     location.href = `https://phoenix-freedom-foundation-backend.webflow.io/completed-forms/educational-consultation?id=${id}`
   })
